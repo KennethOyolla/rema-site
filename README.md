@@ -12,6 +12,6 @@ Build locally: `python3 build.py`, then open `dist/index.html` (or `python3 -m h
 Vercel runs the same command (see `vercel.json`) and serves `dist/`.
 
 ## Still to do
-- Real BTL01 screenshots to replace the HTML phone mock-ups
+- Real screenshots of the Today screen, a store task list and an order, to replace the remaining mock-ups
 - Connect the demo form to Zoho CRM web-to-lead (it currently opens an e-mail)
 - `assets/og.png` share image

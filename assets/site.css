@@ -247,3 +247,8 @@ p { margin: 0; max-width: 64ch; }
 .band.deep .form-card p, .band.deep .form-card .small { color: var(--muted); }
 .band.deep .form-card .form-done { color: #0B2A1C; }
 .mock-note { max-width: none; }
+
+/* real app screenshots inside the phone frame */
+.phone.real { aspect-ratio: auto; height: auto; }
+.phone.real .scr { height: auto; display: block; background: #fff; }
+.phone.real img { width: 100%; height: auto; display: block; }
