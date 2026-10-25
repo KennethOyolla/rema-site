@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://remasolutions.co.ke/sitemap.xml

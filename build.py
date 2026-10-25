@@ -93,6 +93,7 @@ FOOTER = f"""
 def build():
     if DIST.exists(): shutil.rmtree(DIST)
     shutil.copytree(ROOT / "assets", DIST / "assets")
+    for f in (ROOT / "static").iterdir(): shutil.copy(f, DIST / f.name)
     for p in sorted(PAGES.glob("*.html")):
         src = p.read_text()
         m = re.match(r"\s*<!--(.*?)-->", src, re.S)
