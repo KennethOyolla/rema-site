@@ -13,5 +13,5 @@ Vercel runs the same command (see `vercel.json`) and serves `dist/`.
 
 ## Still to do
 - Real screenshots of the Today screen, a store task list and an order, to replace the remaining mock-ups
-- Connect the demo form to Zoho CRM web-to-lead (it currently opens an e-mail)
+- Demo form posts to Zoho CRM web-to-lead (form "ReMA website - demo request", Leads; Business Unit = ReMA; Lead Source = Website or Blueflame website). Company, type, team size and notes go into Description.
 - `assets/og.png` share image

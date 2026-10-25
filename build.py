@@ -45,28 +45,36 @@ def header(active):
 <main>"""
 
 FORM = """
-<form class="form-card lead" id="demo-form" method="post" accept-charset="UTF-8">
+<form class="form-card lead" id="demo-form" action="https://crm.zoho.com/crm/WebToLeadForm" method="POST" accept-charset="UTF-8">
   <h3>Request a demo or a trial</h3>
   <p class="small">We reply within one working day. A trial runs for a month with your own stores, people and products.</p>
-  <input type="hidden" name="Lead Source" value="ReMA website">
+  <!-- Zoho CRM web-to-lead: "ReMA website - demo request" form, Leads module -->
+  <input type="hidden" name="xnQsjsdp" value="325270c16af442339ac6c5e9610dee95fbcdad474304c7b3750b58657d344c2f">
+  <input type="hidden" name="zc_gad" id="zc_gad" value="">
+  <input type="hidden" name="xmIwtLD" value="8d1f6792ffa93b9deae5eac98f8282c6d6574d567a687f6fc3d81813f79ef006e3baeba62868092c26946ae77a783eac">
+  <input type="hidden" name="actionType" value="TGVhZHM=">
+  <input type="hidden" name="returnURL" value="https://remasolutions.co.ke/thanks">
+  <input type="hidden" name="Lead Source" value="Website">
+  <input type="hidden" name="LEADCF17" value="ReMA">
+  <input type="hidden" name="Description" value="">
+  <div style="position:absolute;left:-9999px" aria-hidden="true"><input type="text" name="aG9uZXlwb3Q" tabindex="-1" autocomplete="off" value=""></div>
   <div class="fields">
-    <label>Your name<input name="Name" autocomplete="name" required></label>
-    <label>Company<input name="Company" autocomplete="organization" required></label>
-    <label>Phone or WhatsApp<input name="Phone" type="tel" autocomplete="tel" required></label>
-    <label>Work e-mail<input name="Email" type="email" autocomplete="email"></label>
+    <label>Your name<input name="Last Name" maxlength="80" autocomplete="name" required></label>
+    <label>Company<input data-desc="Company" maxlength="120" autocomplete="organization" required></label>
+    <label>Phone or WhatsApp<input name="Mobile" type="tel" maxlength="30" autocomplete="tel" required></label>
+    <label>Work e-mail<input name="Email" type="email" maxlength="100" autocomplete="email"></label>
     <label>Country<select name="Country"><option>Kenya</option><option>Uganda</option><option>Tanzania</option><option>Rwanda</option><option>Other</option></select></label>
-    <label>You are a<select name="Company type"><option>Merchandising agency</option><option>Manufacturer / brand owner</option><option>Distributor</option><option>Other</option></select></label>
+    <label>You are a<select data-desc="Company type"><option>Merchandising agency</option><option>Manufacturer / brand owner</option><option>Distributor</option><option>Field sales team</option><option>Other</option></select></label>
     <div class="full"><span class="small" style="font-weight:600;color:var(--ink-2)">People in the field</span>
       <div class="radio-row" style="margin-top:6px">
-        <label><input type="radio" name="Field team" value="1-10">1–10</label>
-        <label><input type="radio" name="Field team" value="10-30" checked>10–30</label>
-        <label><input type="radio" name="Field team" value="30+">30+</label>
+        <label><input type="radio" name="team" data-desc="People in the field" value="1-10">1–10</label>
+        <label><input type="radio" name="team" data-desc="People in the field" value="10-30" checked>10–30</label>
+        <label><input type="radio" name="team" data-desc="People in the field" value="30+">30+</label>
       </div></div>
-    <label class="full">Anything we should know (optional)<textarea name="Notes" placeholder="Chains you cover, how you report today, when you'd like to start"></textarea></label>
+    <label class="full">Anything we should know (optional)<textarea data-desc="Notes" maxlength="1500" placeholder="Chains you cover, how you report today, when you'd like to start"></textarea></label>
   </div>
   <button class="btn btn-primary" type="submit">Request a demo</button>
   <p class="form-note">Prefer to talk? Call 0709 100 140 or WhatsApp 0202 040 040.</p>
-  <div class="form-done" role="status">Thanks — we've got your request and will be in touch within one working day.</div>
 </form>"""
 
 FOOTER = f"""

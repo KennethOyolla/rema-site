@@ -15,18 +15,21 @@
   var ref = new URLSearchParams(location.search).get('ref');
   try { if (ref) sessionStorage.setItem('rema_ref', ref); ref = ref || sessionStorage.getItem('rema_ref'); } catch (e) {}
   document.querySelectorAll('input[name="Lead Source"]').forEach(function (i) {
-    i.value = ref === 'blueflame' ? 'ReMA via Blueflame' : 'ReMA website';
+    i.value = ref === 'blueflame' ? 'Blueflame website' : 'Website';
   });
 
-  // Until the Zoho CRM web-to-lead form is connected, the form confirms on the page and opens an e-mail with the details.
+  // Zoho has no Company, company-type or team-size fields on Leads, so those go into the lead's Description.
   document.querySelectorAll('form.lead').forEach(function (f) {
-    if (f.getAttribute('action')) return; // connected to Zoho: let it post normally
-    f.addEventListener('submit', function (ev) {
-      ev.preventDefault();
-      var d = new FormData(f), lines = [];
-      d.forEach(function (v, k) { if (v) lines.push(k + ': ' + v); });
-      location.href = 'mailto:office@blue-flame.co.ke?subject=' + encodeURIComponent('ReMA demo request') + '&body=' + encodeURIComponent(lines.join('\n'));
-      var done = f.querySelector('.form-done'); if (done) done.style.display = 'block';
+    f.addEventListener('submit', function () {
+      var lines = [];
+      f.querySelectorAll('[data-desc]').forEach(function (el) {
+        if ((el.type === 'radio' && !el.checked) || !el.value) return;
+        lines.push(el.getAttribute('data-desc') + ': ' + el.value.trim());
+      });
+      lines.push('Page: ' + location.pathname);
+      f.querySelector('input[name="Description"]').value = lines.join('\n');
+      var btn = f.querySelector('button[type="submit"]');
+      if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
     });
   });
 })();
