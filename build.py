@@ -49,9 +49,9 @@ FORM = """
   <h3>Request a demo or a trial</h3>
   <p class="small">We reply within one working day. A trial runs for a month with your own stores, people and products.</p>
   <!-- Zoho CRM web-to-lead: "ReMA website - demo request" form, Leads module -->
-  <input type="hidden" name="xnQsjsdp" value="325270c16af442339ac6c5e9610dee95fbcdad474304c7b3750b58657d344c2f">
+  <input type="hidden" name="xnQsjsdp" value="9aad8c7cb23f4581bc1624213b738ac5ae00454a7760c5b3bfab7f8f3a858a4f">
   <input type="hidden" name="zc_gad" id="zc_gad" value="">
-  <input type="hidden" name="xmIwtLD" value="8d1f6792ffa93b9deae5eac98f8282c6d6574d567a687f6fc3d81813f79ef006e3baeba62868092c26946ae77a783eac">
+  <input type="hidden" name="xmIwtLD" value="d7d06d270f5b81d1eb01a5636e758c38903132f8d242ba5df0a6c97153a1d6e153c3f10ae821fdfba1cab472ff9bb1ad">
   <input type="hidden" name="actionType" value="TGVhZHM=">
   <input type="hidden" name="returnURL" value="https://remasolutions.co.ke/thanks">
   <input type="hidden" name="Lead Source" value="Website">
@@ -60,16 +60,16 @@ FORM = """
   <div style="position:absolute;left:-9999px" aria-hidden="true"><input type="text" name="aG9uZXlwb3Q" tabindex="-1" autocomplete="off" value=""></div>
   <div class="fields">
     <label>Your name<input name="Last Name" maxlength="80" autocomplete="name" required></label>
-    <label>Company<input data-desc="Company" maxlength="120" autocomplete="organization" required></label>
+    <label>Company<input name="Company" maxlength="200" autocomplete="organization" required></label>
     <label>Phone or WhatsApp<input name="Mobile" type="tel" maxlength="30" autocomplete="tel" required></label>
     <label>Work e-mail<input name="Email" type="email" maxlength="100" autocomplete="email"></label>
     <label>Country<select name="Country"><option>Kenya</option><option>Uganda</option><option>Tanzania</option><option>Rwanda</option><option>Other</option></select></label>
-    <label>You are a<select data-desc="Company type"><option>Merchandising agency</option><option>Manufacturer / brand owner</option><option>Distributor</option><option>Field sales team</option><option>Other</option></select></label>
+    <label>You are a<select name="LEADCF27"><option>Merchandising agency</option><option value="Manufacturer/brand owner">Manufacturer / brand owner</option><option>Distributor</option><option>Field sales team</option><option>Other</option></select></label>
     <div class="full"><span class="small" style="font-weight:600;color:var(--ink-2)">People in the field</span>
       <div class="radio-row" style="margin-top:6px">
-        <label><input type="radio" name="team" data-desc="People in the field" value="1-10">1–10</label>
-        <label><input type="radio" name="team" data-desc="People in the field" value="10-30" checked>10–30</label>
-        <label><input type="radio" name="team" data-desc="People in the field" value="30+">30+</label>
+        <label><input type="radio" name="LEADCF28" value="1-10">1–10</label>
+        <label><input type="radio" name="LEADCF28" value="11-30" checked>11–30</label>
+        <label><input type="radio" name="LEADCF28" value="31+">31+</label>
       </div></div>
     <label class="full">Anything we should know (optional)<textarea data-desc="Notes" maxlength="1500" placeholder="Chains you cover, how you report today, when you'd like to start"></textarea></label>
   </div>

@@ -13,5 +13,5 @@ Vercel runs the same command (see `vercel.json`) and serves `dist/`.
 
 ## Still to do
 - Real screenshots of the Today screen, a store task list and an order, to replace the remaining mock-ups
-- Demo form posts to Zoho CRM web-to-lead (form "ReMA website - demo request", Leads; Business Unit = ReMA; Lead Source = Website or Blueflame website). Company, type, team size and notes go into Description.
+- Demo form posts to Zoho CRM web-to-lead (form "ReMA website - demo request", Leads; Business Unit = ReMA; Lead Source = Website or Blueflame website). Company -> Company, Company Type -> LEADCF27, Field Team Size -> LEADCF28 (both map to Accounts on conversion); notes go into Description. Editing the form in Zoho regenerates xnQsjsdp/xmIwtLD — copy the new values into build.py.
 - `assets/og.png` share image

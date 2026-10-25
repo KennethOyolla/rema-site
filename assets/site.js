@@ -18,7 +18,7 @@
     i.value = ref === 'blueflame' ? 'Blueflame website' : 'Website';
   });
 
-  // Zoho has no Company, company-type or team-size fields on Leads, so those go into the lead's Description.
+  // Notes and the page the form was sent from go into the lead's Description.
   document.querySelectorAll('form.lead').forEach(function (f) {
     f.addEventListener('submit', function () {
       var lines = [];
