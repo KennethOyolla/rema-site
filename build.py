@@ -74,7 +74,7 @@ FOOTER = f"""
 <footer class="foot"><div class="wrap">
   <div>
     <span class="logo-chip"><img src="/assets/rema-logo.png" alt="ReMA" width="64" height="22"></span>
-    <p>Retail execution for field teams: store visits, availability, price, share of shelf and a weekly review deck every Sunday at 8pm.</p>
+    <p>The field app for sales and merchandising teams: store visits, availability, price, share of shelf, orders and a weekly review deck every Sunday at 8pm.</p>
   </div>
   <div><h3>Product</h3><ul>{''.join(f'<li><a href="/{s}">{t}</a></li>' for s, t in NAV)}<li><a href="{APP}">Sign in</a></li></ul></div>
   <div><h3>Talk to us</h3><ul>
