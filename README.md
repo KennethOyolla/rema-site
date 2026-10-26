@@ -11,6 +11,9 @@ Plain static HTML, no framework, no dependencies — light on data for phone vis
 Build locally: `python3 build.py`, then open `dist/index.html` (or `python3 -m http.server -d dist`).
 Vercel runs the same command (see `vercel.json`) and serves `dist/`.
 
+## Live chat
+Zoho SalesIQ brand "ReMA" (portal blueflame5, department ReMA). Widget code is in `build.py` just before `</body>`; it loads deferred. The WhatsApp button sits bottom-left so it doesn't cover the chat bubble.
+
 ## Still to do
 - Real screenshots of the Today screen, a store task list and an order, to replace the remaining mock-ups
 - Demo form posts to Zoho CRM web-to-lead (form "ReMA website - demo request", Leads; Business Unit = ReMA; Lead Source = Website or Blueflame website). Company -> Company, Company Type -> LEADCF27, Field Team Size -> LEADCF28 (both map to Accounts on conversion); notes go into Description. Editing the form in Zoho regenerates xnQsjsdp/xmIwtLD — copy the new values into build.py.

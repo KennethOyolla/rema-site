@@ -185,7 +185,7 @@ p { margin: 0; max-width: 64ch; }
 @media (max-width: 760px) { .foot .wrap { grid-template-columns: 1fr; } }
 
 /* sticky whatsapp */
-.wa { position: fixed; right: 16px; bottom: 16px; z-index: 30; background: #1C7F46; color: #fff; border-radius: 999px; padding: 12px 16px; font-weight: 600; font-size: .92rem; text-decoration: none; box-shadow: 0 10px 24px -10px rgba(0,0,0,.5); }
+.wa { position: fixed; left: 16px; bottom: 16px; z-index: 30; background: #1C7F46; color: #fff; border-radius: 999px; padding: 12px 16px; font-weight: 600; font-size: .92rem; text-decoration: none; box-shadow: 0 10px 24px -10px rgba(0,0,0,.5); }
 
 /* ============ phone mock-ups, styled with the app's own tokens ============ */
 .phone { --bg: #EEF2F4; --surface: #FFFFFF; --sunk: #E1E7EB; --ink: #142028; --muted: #55636D; --line: #D2DAE0; --brand: #3570B3; --brand-soft: #DEEAF6; --ok: #1C7F46; --warn: #9A5F06; --bad: #B8352A; --ok-bg: #DDF1E4; --warn-bg: #FBEBCD; --bad-bg: #F8DEDA;

@@ -94,6 +94,7 @@ FOOTER = f"""
 </div></footer>
 <a class="wa" href="https://wa.me/254202040040?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20ReMA">WhatsApp us</a>
 <script src="/assets/site.js" defer></script>
+<script>window.$zoho=window.$zoho || {{}};$zoho.salesiq=$zoho.salesiq||{{ready:function(){{}}}}</script><script id="zsiqscript" src="https://salesiq.zohopublic.com/widget?wc=siqc124da246565cf55ff7fab47605d84ef" defer></script>
 </body>
 </html>
 """
