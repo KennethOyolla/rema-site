@@ -64,7 +64,7 @@ FORM = """
     <label>Phone or WhatsApp<input name="Mobile" type="tel" maxlength="30" autocomplete="tel" required></label>
     <label>Work e-mail<input name="Email" type="email" maxlength="100" autocomplete="email"></label>
     <label>Country<select name="Country"><option>Kenya</option><option>Uganda</option><option>Tanzania</option><option>Rwanda</option><option>Other</option></select></label>
-    <label>You are a<select name="LEADCF27"><option>Merchandising agency</option><option value="Manufacturer/brand owner">Manufacturer / brand owner</option><option>Distributor</option><option>Field sales team</option><option>Other</option></select></label>
+    <label>You are a<select name="LEADCF27"><option>Merchandising agency</option><option value="Manufacturer/brand owner">Manufacturer / brand owner</option><option>Distributor</option><option>Field sales team</option><option value="Other" data-note="Brand activation / experiential agency">Brand activation / experiential agency</option><option>Other</option></select></label>
     <div class="full"><span class="small" style="font-weight:600;color:var(--ink-2)">People in the field</span>
       <div class="radio-row" style="margin-top:6px">
         <label><input type="radio" name="LEADCF28" value="1-10">1–10</label>
@@ -84,7 +84,7 @@ FOOTER = f"""
     <span class="logo-chip"><img src="/assets/rema-logo.png" alt="ReMA" width="64" height="22"></span>
     <p>The field app for sales and merchandising teams: store visits, availability, price, share of shelf, orders and a weekly review deck every Sunday at 8pm.</p>
   </div>
-  <div><h3>Product</h3><ul>{''.join(f'<li><a href="/{s}">{t}</a></li>' for s, t in NAV)}<li><a href="{APP}">Sign in</a></li></ul></div>
+  <div><h3>Product</h3><ul>{''.join(f'<li><a href="/{s}">{t}</a></li>' for s, t in NAV)}<li><a href="/brand-activation">REMA-X for brand activation</a></li><li><a href="{APP}">Sign in</a></li></ul></div>
   <div><h3>Talk to us</h3><ul>
     <li><a href="tel:+254709100140">0709 100 140</a></li>
     <li><a href="https://wa.me/254202040040">WhatsApp 0202 040 040</a></li>

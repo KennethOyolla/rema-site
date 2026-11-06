@@ -18,6 +18,9 @@
     i.value = ref === 'blueflame' ? 'Blueflame website' : 'Website';
   });
 
+  // On the REMA-X page, preselect "Brand activation" in the form.
+  if (/brand-activation/.test(location.pathname)) document.querySelectorAll('form.lead option[data-note]').forEach(function (o) { o.selected = true; });
+
   // Notes and the page the form was sent from go into the lead's Description.
   document.querySelectorAll('form.lead').forEach(function (f) {
     f.addEventListener('submit', function () {
@@ -25,6 +28,10 @@
       f.querySelectorAll('[data-desc]').forEach(function (el) {
         if ((el.type === 'radio' && !el.checked) || !el.value) return;
         lines.push(el.getAttribute('data-desc') + ': ' + el.value.trim());
+      });
+      f.querySelectorAll('select').forEach(function (sel) {
+        var o = sel.options[sel.selectedIndex];
+        if (o && o.getAttribute('data-note')) lines.push('Type: ' + o.getAttribute('data-note'));
       });
       lines.push('Page: ' + location.pathname);
       f.querySelector('input[name="Description"]').value = lines.join('\n');

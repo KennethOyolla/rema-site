@@ -252,3 +252,30 @@ p { margin: 0; max-width: 64ch; }
 .phone.real { aspect-ratio: auto; height: auto; }
 .phone.real .scr { height: auto; display: block; background: #fff; }
 .phone.real img { width: 100%; height: auto; display: block; }
+
+/* ============ REMA-X (brand activation) — its red X only on the band and its own page ============ */
+:root { --x-red: #E0392F; --x-navy: #12263A; }
+.btn-x { background: var(--x-red); color: #fff; }
+.btn-x:hover { background: #C22E25; }
+.x-logo { height: auto; width: min(240px, 46vw); }
+.x-hero .phone-wrap { padding-top: 0; }
+.x-band { padding: clamp(36px, 5vw, 64px) 0; }
+.x-card { display: grid; grid-template-columns: 220px 1fr; gap: clamp(20px, 4vw, 48px); align-items: center; border: 1px solid var(--line); border-left: 6px solid var(--x-red); border-radius: 18px; padding: clamp(22px, 4vw, 36px); background: #fff; }
+.x-card img { width: 200px; height: auto; }
+.x-card h2 { font-size: clamp(1.4rem, 2.6vw, 2rem); margin-top: 8px; }
+.x-card p { color: var(--ink-2); margin-top: 12px; }
+.x-card .x-link { font-weight: 600; }
+.x-eyebrow { font-size: .82rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--x-red) !important; margin-top: 0 !important; }
+@media (max-width: 760px) { .x-card { grid-template-columns: 1fr; } .x-card img { width: 160px; } }
+.tag.x-tag { background: #FBE3E1; color: #7A1A14; }
+.problems.x > div:nth-child(1) { border-color: var(--x-red); }
+.problems.x > div:nth-child(2) { border-color: var(--x-navy); }
+.problems.x > div:nth-child(3) { border-color: var(--m-teal); }
+.x-steps { grid-template-columns: 1fr 1fr; column-gap: clamp(20px, 4vw, 56px); }
+.x-steps li:nth-last-child(2) { border-bottom: 0; }
+.steps li:nth-child(6)::before { background: var(--x-red); }
+@media (max-width: 760px) { .x-steps { grid-template-columns: 1fr; } .x-steps li:nth-last-child(2) { border-bottom: 1px solid var(--line); } }
+.x-clock small { color: #FF8A80; }
+.phone .crowd { height: 70px; border-radius: 10px; background: radial-gradient(circle at 20% 60%, #C9B79A 0 6px, transparent 7px), radial-gradient(circle at 35% 45%, #A88F6E 0 6px, transparent 7px), radial-gradient(circle at 52% 62%, #C9B79A 0 6px, transparent 7px), radial-gradient(circle at 68% 48%, #A88F6E 0 6px, transparent 7px), radial-gradient(circle at 82% 60%, #C9B79A 0 6px, transparent 7px), linear-gradient(#DCE5EA, #C7D3DA); position: relative; margin-bottom: 4px; }
+.phone .crowd span { position: absolute; left: 8px; top: 8px; font-size: 9.5px; font-weight: 650; background: rgba(255,255,255,.9); padding: 1px 6px; border-radius: 6px; color: var(--muted); }
+.phone .crowd b { position: absolute; right: 8px; bottom: 8px; font-size: 12px; background: var(--x-red); color: #fff; padding: 2px 8px; border-radius: 999px; }
