@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Assembles the static site: pages/*.html + shared head, header, form and footer -> dist/.
-Each page starts with a comment block of settings:  <!-- title: ... | desc: ... | nav: home -->"""
-import re, shutil, pathlib
+Each page starts with a comment block of settings:  <!-- title: ... | desc: ... | nav: home [| index: no] -->
+index: no keeps a page out of Google (noindex) and out of the sitemap, which build() generates."""
+import re, shutil, pathlib, subprocess, datetime, json
 
 ROOT = pathlib.Path(__file__).parent
 PAGES, DIST = ROOT / "pages", ROOT / "dist"
@@ -10,26 +11,43 @@ APP = "https://rema.blue-flame.co.ke"
 
 NAV = [("how-it-works", "How it works"), ("dashboards", "Dashboards"), ("who-its-for", "Who it's for"), ("pricing", "Pricing & trial")]
 
-def head(title, desc, slug):
-    url = SITE + ("/" if slug == "index" else f"/{slug}")
+ORG_LD = json.dumps({
+    "@context": "https://schema.org",
+    "@graph": [
+        {"@type": "WebSite", "@id": SITE + "/#website", "url": SITE + "/", "name": "ReMA", "alternateName": "ReMA Solutions"},
+        {"@type": "Organization", "@id": SITE + "/#org", "name": "ReMA", "url": SITE + "/", "logo": SITE + "/icon-512.png",
+         "parentOrganization": {"@type": "Organization", "name": "Blueflame Technologies Ltd", "url": "https://www.blue-flame.co.ke"},
+         "telephone": "+254709100140", "email": "office@blue-flame.co.ke"},
+    ]})
+
+def url_for(slug):
+    return SITE + ("/" if slug == "index" else f"/{slug}")
+
+def head(title, desc, slug, index=True):
+    url = url_for(slug)
+    robots = "" if index else '\n<meta name="robots" content="noindex">'
+    ld = f'\n<script type="application/ld+json">{ORG_LD}</script>' if slug == "index" else ""
     return f"""<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
-<meta name="description" content="{desc}">
+<meta name="description" content="{desc}">{robots}
 <link rel="canonical" href="{url}">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:url" content="{url}">
 <meta property="og:image" content="{SITE}/assets/og.png">
 <meta name="theme-color" content="#3570B3">
-<link rel="icon" href="/assets/favicon.png">
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-96x96.png" type="image/png" sizes="96x96">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/site.css">{ld}
 </head>
 <body>"""
 
@@ -99,18 +117,37 @@ FOOTER = f"""
 </html>
 """
 
+def lastmod(path):
+    """Date the file last changed in git; today if git history isn't available (e.g. a shallow clone)."""
+    try:
+        d = subprocess.run(["git", "log", "-1", "--format=%cs", "--", str(path)], cwd=ROOT,
+                           capture_output=True, text=True, timeout=10).stdout.strip()
+    except Exception:
+        d = ""
+    return d or datetime.date.today().isoformat()
+
+def sitemap(entries):
+    urls = "".join(f"\n  <url><loc>{u}</loc><lastmod>{d}</lastmod></url>" for u, d in entries)
+    return f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}\n</urlset>\n'
+
 def build():
     if DIST.exists(): shutil.rmtree(DIST)
     shutil.copytree(ROOT / "assets", DIST / "assets")
     for f in (ROOT / "static").iterdir(): shutil.copy(f, DIST / f.name)
+    entries = []
     for p in sorted(PAGES.glob("*.html")):
         src = p.read_text()
         m = re.match(r"\s*<!--(.*?)-->", src, re.S)
         meta = dict(kv.split(":", 1) for kv in (x.strip() for x in m.group(1).split("|")) if ":" in kv)
         meta = {k.strip(): v.strip() for k, v in meta.items()}
         body = src[m.end():].replace("{{FORM}}", FORM).replace("{{APP}}", APP)
-        out = head(meta["title"], meta["desc"], p.stem) + header(meta.get("nav", "")) + body + FOOTER
+        index = meta.get("index", "yes") != "no"
+        if index:
+            entries.append((url_for(p.stem), lastmod(p)))
+        out = head(meta["title"], meta["desc"], p.stem, index) + header(meta.get("nav", "")) + body + FOOTER
         (DIST / p.name).write_text(out)
+    entries.sort(key=lambda e: (e[0] != SITE + "/", e[0]))  # homepage first
+    (DIST / "sitemap.xml").write_text(sitemap(entries))
     print("built", [p.name for p in DIST.glob("*.html")])
 
 if __name__ == "__main__":
