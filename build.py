@@ -7,7 +7,7 @@ import re, shutil, pathlib, subprocess, datetime, json
 ROOT = pathlib.Path(__file__).parent
 PAGES, DIST = ROOT / "pages", ROOT / "dist"
 SITE = "https://remasolutions.co.ke"
-APP = "https://rema.blue-flame.co.ke"
+APP = "https://app.remasolutions.co.ke"
 
 NAV = [("how-it-works", "How it works"), ("dashboards", "Dashboards"), ("who-its-for", "Who it's for"), ("pricing", "Pricing & trial")]
 

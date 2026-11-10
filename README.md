@@ -1,6 +1,6 @@
 # ReMA Solutions website
 
-Marketing site for ReMA at **remasolutions.co.ke**. The app itself lives at rema.blue-flame.co.ke (repo `KennethOyolla/rema`).
+Marketing site for ReMA at **remasolutions.co.ke**. The app itself lives at app.remasolutions.co.ke (repo `KennethOyolla/rema`).
 
 Plain static HTML, no framework, no dependencies — light on data for phone visitors.
 
